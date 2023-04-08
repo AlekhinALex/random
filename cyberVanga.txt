@@ -1,0 +1,32 @@
+#include <iostream>
+#include <time.h>
+using namespace std;
+
+unsigned long long seed = 1;
+unsigned int lcg() {
+    int a = 16807;
+    unsigned m = 0x7fffffff;
+    seed = seed * a % m;
+    return seed;
+}
+
+int main() {
+    unsigned int mods[7] = { 19, 18, 22, 27, 34, 28, 17 };
+    int current_pos = 0;
+    while (current_pos < 7) {
+
+        if (mods[current_pos] == lcg() % 37) {
+            current_pos++;
+        }
+        else {
+            current_pos = 0;
+
+        }
+    }
+    while (1) {
+        cout << lcg() % 37 << "\n";
+        getchar();
+    }
+
+    return 0;
+}

@@ -1,0 +1,25 @@
+#include <iostream>
+#include <time.h>;
+
+unsigned long long seed = 1;
+unsigned int lcg() {
+	int a = 16807;
+	unsigned m = 0x7fffffff;
+	seed = seed * a % m;
+	return seed;
+}
+
+int main() {
+	seed = time(0);
+	std::cout << " - Введите до какого числа будет генерироваться: ";
+	int y;
+	std::cin >> y;
+	while (1) {
+		unsigned int r = lcg() % y;
+		std::cout << r << "\n";
+		getchar();
+	}
+	return 0;
+}
+
+
